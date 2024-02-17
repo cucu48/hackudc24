@@ -32,12 +32,18 @@ Then we must install all the project dependecies. To do that, in a terminal, go 
 ```bash
 npm install
 ``` 
+
+Our sponsor provided us a self-hosted mockup API made with Postman. You can self-host your [here](https://learning.postman.com/docs/designing-and-developing-your-api/mocking-data/setting-up-mock/) by importing our exported files, as well as enviroment preferences. 
+
 Then, we are ready to run the web. To do that run the following command:
 ```bash 
 npm run dev
 ```
 
 ## Functionality 
+The application consists of a Next.js application that is listening for http web requests; when a request is made, it requests the forms API which tells the application which form needs to render. Our software is cappable of rendering any type of input, including Font Awesome icons. The callback URL, as well as the method to transfer the input data can be customized. We've implemented a terms and conditions page so you can customize it, as well as being legal :D.
+
+### Locla deplo
 
 ## License 
 

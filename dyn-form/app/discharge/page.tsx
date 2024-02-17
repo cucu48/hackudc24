@@ -36,7 +36,7 @@ export default function Page() {
                             }));
                         }
 
-                        const fields_by_groups = data.form_fields.reduce((groups, field) => {
+                        const fields_by_groups = data.form_fields.reduce((groups: any, field: any) => {
                             const group = groups[field.field_group] || [];
                             return {
                                 ...groups,
@@ -46,7 +46,7 @@ export default function Page() {
 
                         //Ordena los campos por cada grupo
                         for (const groupKey in fields_by_groups) {
-                            fields_by_groups[groupKey].sort((a, b) => a.field_order - b.field_order);
+                            fields_by_groups[groupKey].sort((a: any, b: any) => a.field_order - b.field_order);
                         }
                         setFormGroups(fields_by_groups);
                     }else{
@@ -73,14 +73,14 @@ export default function Page() {
             // implement a function to change the display value of the elements
             // console.log(inputValues);
             for (const a of Object.entries(inputValues)) {
-                const id = a[0];
-                const elem = a[1];
+                const id: any = a[0];
+                const elem: any = a[1];
 
-                const value = elem[0];
-                const trueelem = elem[1];
+                
+                const trueelem:any = elem[1];
 
                 if (trueelem.field_dependent_on) {
-                    const fatherValue = inputValues[trueelem.field_dependent_on.field_id];
+                    const fatherValue: any = inputValues[trueelem.field_dependent_on.field_id];
                     if (
                         fatherValue &&
                         fatherValue[0] === trueelem.field_dependent_on.field_value
