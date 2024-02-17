@@ -1,5 +1,6 @@
 "use client";
 
+
 import { Console } from "console";
 import React from "react";
 import { useState, useEffect } from "react";
@@ -101,9 +102,6 @@ export default function Page() {
     },
     [inputValues]
   );
-
-
-
 
   return (
     <div>
