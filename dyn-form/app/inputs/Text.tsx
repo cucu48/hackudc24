@@ -33,7 +33,14 @@ export default function Text(props: {
         const isValid = value.length >= element.field_validations.min_length;
         isValid
           ? setErrorMessage("")
-          : setErrorMessage("Text should be at least 10 characters");
+          : setErrorMessage("Text should be at least " + element.field_validations.min_length + " characters");
+        setIsValid(isValid);
+      }
+      if (element.field_validations.max_length !== undefined) {
+        const isValid = value.length <= element.field_validations.min_length;
+        isValid
+          ? setErrorMessage("")
+          : setErrorMessage("Text should be at max " + element.field_validations.max_length + " characters");
         setIsValid(isValid);
       }
     }

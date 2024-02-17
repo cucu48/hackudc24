@@ -96,6 +96,7 @@ export default function Page() {
             // console.log("HIDE", id, fatherValue);
             document.getElementById(id)?.setAttribute("style", "display:none");
             if(document.getElementById(id)?.getAttribute("required")){
+              document.getElementById(id)?.removeAttribute("required");
               document.getElementById(id)?.setAttribute("novalidate", "true");
             }
             // console.log(trueelem);
