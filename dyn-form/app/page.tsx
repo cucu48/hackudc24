@@ -69,10 +69,9 @@ export default function Page() {
     <div>
       <form action="" method="post" className="container">
         <div>
-          <h1 className="mt-5">{data.form_type_name}</h1>
+          <h1 className="mb-5">{data.form_type_name}</h1>
           <p>{data.form_type_description}</p>
         </div>
-
         <InputSection data={data} setInputValues={setInputValues} />
         <input type="submit" value="Send form" disabled />
         <p className="text-black-50">
