@@ -111,13 +111,22 @@ export default function Page() {
           <p>{data.form_type_description}</p>
         </div>
         <InputSection formGroups={formGroups} formNames={formNames} setInputValues={setInputValues} />
-        <input type="submit" value="Send form" className="btn btn-info" />
-        <p className="text-black-50">
-          This form requires to be filled following each requirement.
-        </p>
+          
+          {data.form_privacy_policy_url && data.form_privacy_policy_placeholder && (
+          <p className="text-black-50">
+            By submiting form button, you agree to our <a href={data.form_privacy_policy_url}>{data.form_privacy_policy_placeholder}</a>
+          </p>
+          )}
+        <button className="btn btn-info" >
+          <i className="fa-solid fa-paper-plane"></i>&nbsp;Send!
+        </button>
       </form>
       <link rel="stylesheet" 
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></link>
+    
+
+    
+    <br />
     </div>
   );
 }
