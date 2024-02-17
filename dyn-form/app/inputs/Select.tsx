@@ -11,7 +11,7 @@ export default function Select(props: {
   const inputId = "inp" + element.field_id;
   const [isValid, setIsValid] = useState(true);
 
-  const handleValidation = (value) => {
+  const handleValidation = (value: any) => {
     // Implement your specific validation logic here
     // Example: Validate that the selected value is within a specific set of options
     const validOptions = element.field_validations.options || [];

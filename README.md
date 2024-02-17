@@ -41,7 +41,7 @@ npm run dev
 ```
 
 ## Functionality 
-The application consists of a Next.js application that is listening for http web requests; when a request is made, it requests the forms API which tells the application which form needs to render. Our software is cappable of rendering any type of input, including Font Awesome icons. The callback URL, as well as the method to transfer the input data can be customized. We've implemented a terms and conditions page so you can customize it, as well as being legal :D.
+The application consists of a Next.js application that is listening for http web requests; when a request is made, it requests the forms API which tells the application which form needs to render. Our software is cappable of rendering any type of input, including Font Awesome icons, range color, inputs, The callback URL, as well as the method to transfer the input data can be customized. We've implemented a terms and conditions page so you can customize it, as well as being legal :D.
 
 ### Locla deplo
 
