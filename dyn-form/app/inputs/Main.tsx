@@ -24,7 +24,7 @@ export default function InputSection(props: {formGroups: any, formNames: any, se
       
                 switch (element.field_type) {
                   case "text":
-                    console.log("text");
+                  case "string":
                     return <Text element={element} key={index} setInputValues={setInputValues} inputValues={inputValues}/>;
                   case "number":
                     return <Number element={element} key={index} setInputValues={setInputValues} inputValues={inputValues} />;
@@ -35,6 +35,7 @@ export default function InputSection(props: {formGroups: any, formNames: any, se
                   case "select":
                     return <Select element={element} key={index} setInputValues={setInputValues} inputValues={inputValues} />;
                   default:
+                    console.error(element.field_type + " not found");
                     return <NotFound />;
                   }
                 })}  

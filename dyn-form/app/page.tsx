@@ -15,7 +15,7 @@ export default function Page() {
   
   useEffect(() => {
     try {
-      fetch(url + "/api/v1/formTypes/3")
+      fetch(url + "/api/v1/formTypes/1")
         .then((res) => res.json())
         .then((data) => {
           setData(data);
