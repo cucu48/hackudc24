@@ -25,7 +25,7 @@ function Page() {
         for (const element of data.form_fields) {
           setInputValues((prevState) => ({
             ...prevState,
-            [element.field_id]: ["", element],
+            [element.field_id]: [element.field_default_value, element],
           }));
         }
       });
@@ -77,6 +77,7 @@ function Page() {
 
   return (
     <div>
+      <form action="" method="post">
       <div>
         <h1>{data.form_type_name}</h1>
         <p>{data.form_type_description}</p>
@@ -124,7 +125,7 @@ function Page() {
           ) : element.field_type === "select" ? (
             <StyledDiv id={element.field_id} key={element.field_id} display={element.field_dependent_on}>
               <label>{element.field_name}</label>
-              <select onChange={(event) => handleInputChange(event, element)}>
+              <select onChange={(event) => handleInputChange(event, element)} >
                 {element.field_validations.options &&
                   element.field_validations.options.map((option, index) => (
                     <option key={option} value={option}>
@@ -138,6 +139,9 @@ function Page() {
             <div>not found: {element.field_type} </div>
           )
         )}
+        <input type="submit" value="Send form" disabled />
+        <p className="muted-text">This form requires to be filled following each requirement.</p>
+        </form>
     </div>
   );
 }
