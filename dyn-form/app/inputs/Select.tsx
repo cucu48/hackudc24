@@ -31,12 +31,13 @@ export default function Select(props: {
           }
       >
         <label htmlFor={inputId} className="form-label">
-          {element.field_name}
-        </label>
-        <p className="mb-1 text-black-50">{element.field_description}</p>
         {element.field_icon && (
           <i className={element.field_icon} style={{ marginRight: "10px" }}></i>
         )}
+          {element.field_name}
+        </label>
+        <p className="mb-1 text-black-50">{element.field_description}</p>
+        
         <select
             id={inputId}
             className={`form-select ${isValid ? '' : 'is-invalid'}`} // Apply Bootstrap validation class

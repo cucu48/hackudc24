@@ -7,7 +7,10 @@ export default function Text(props: {
   setInputValues: any;
   inputValues: any;
 }) {
-  const { element, setInputValues, inputValues } = props;
+
+    const { element, setInputValues, inputValues } = props;
+    if(element.field_icon)
+    console.log(element);
   const inputId = "inp" + element.field_id;
   const [isValid, setIsValid] = useState(true);
   const [errorMessage, setErrorMessage] = useState(
@@ -47,12 +50,13 @@ export default function Text(props: {
       display={element.field_dependent_on}
     >
       <label htmlFor={inputId} className="form-label">
-        {element.field_name}
-      </label>
-      <p className="mb-1 text-black-50">{element.field_description}</p>
       {element.field_icon && (
         <i className={element.field_icon} style={{ marginRight: "10px" }}></i>
       )}
+        {element.field_name}
+      </label>
+      <p className="mb-1 text-black-50">{element.field_description}</p>
+      
       <input
         id={inputId}
         className={`form-control ${isValid ? "" : "is-invalid"}`} // Apply Bootstrap validation class

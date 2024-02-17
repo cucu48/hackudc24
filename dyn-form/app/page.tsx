@@ -1,9 +1,5 @@
 "use client";
 
-import "@fortawesome/fontawesome-svg-core/styles.css"
-import { config } from "@fortawesome/fontawesome-svg-core"; 
-config.autoAddCss = false;
-
 import { Console } from "console";
 import React from "react";
 import { useState, useEffect } from "react";
@@ -14,7 +10,7 @@ export default function Page() {
   const [formGroups, setFormGroups] = useState({});
   const [formNames, setFormNames] = useState({});
 
-  const url = "https://ed5f37a0-4bf2-45ff-a76c-2485bfe78b9a.mock.pstmn.io";
+  const url = "https://71411636-b9d7-47b5-b1f6-3173afabf738.mock.pstmn.io";
   const [data, setData] = useState([]);
   
   useEffect(() => {
@@ -126,6 +122,8 @@ export default function Page() {
           This form requires to be filled following each requirement.
         </p>
       </form>
+      <link rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></link>
     </div>
   );
 }
