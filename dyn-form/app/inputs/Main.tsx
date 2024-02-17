@@ -11,8 +11,6 @@ import Recaptcha from "@/app/inputs/Recaptcha";
 import React from 'react';
 
 
-
-
 export default function InputSection(props: {formGroups: any, formNames: any, setInputValues: any, inputValues: any,})
 {
   const { formGroups,formNames, setInputValues, inputValues } = props;
