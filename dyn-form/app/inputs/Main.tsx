@@ -6,6 +6,7 @@ import Select from "@/app/inputs/Select";
 import NotFound from "@/app/custom/errors/404";
 
 import React from 'react';
+import Color from "./Color";
 
 
 
@@ -20,7 +21,7 @@ export default function InputSection(props: {formGroups: any, formNames: any, se
       Object.keys(formGroups).map((groupKey) => (
           <fieldset className="border border-dark rounded p-4 mb-5" key={formNames[groupKey]}>
             <legend className="float-none w-auto">{formNames[groupKey]}</legend>
-              {formGroups[groupKey].map((element, index) => {
+              {formGroups[groupKey].map((element:any, index:any) => {
       
                 switch (element.field_type) {
                   case "text":
@@ -34,6 +35,8 @@ export default function InputSection(props: {formGroups: any, formNames: any, se
                     return <Boolean element={element} key={index} setInputValues={setInputValues} inputValues={inputValues} />;
                   case "select":
                     return <Select element={element} key={index} setInputValues={setInputValues} inputValues={inputValues} />;
+                  case "color":
+                    return <Color element={element} key={index} setInputValues={setInputValues} inputValues={inputValues} />;
                   default:
                     console.error(element.field_type + " not found");
                     return <NotFound />;

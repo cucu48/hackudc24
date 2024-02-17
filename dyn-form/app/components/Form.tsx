@@ -16,7 +16,7 @@ export default function Form({ type }) {
     const [formGroups, setFormGroups] = useState({});
     const [formNames, setFormNames] = useState({});
     const [isLoading, setIsLoading] = useState(true);
-    const url = "https://71411636-b9d7-47b5-b1f6-3173afabf738.mock.pstmn.io";
+    const url = "https://03ae39dd-7f9e-4558-b2dd-bef07460341c.mock.pstmn.io";
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -27,7 +27,7 @@ export default function Form({ type }) {
                     setData(data);
 
                     for (const element of data.form_fields) {
-                        setInputValues((prevState) => ({
+                        setInputValues((prevState: any) => ({
                             ...prevState,
                             [element.field_id]: [element.field_default_value, element],
                         }));
@@ -41,7 +41,7 @@ export default function Form({ type }) {
                             }));
                         }
 
-                        const fields_by_groups = data.form_fields.reduce((groups, field) => {
+                        const fields_by_groups = data.form_fields.reduce((groups: any, field: any) => {
                             const group = groups[field.field_group] || [];
                             return {
                                 ...groups,
@@ -51,7 +51,7 @@ export default function Form({ type }) {
 
                         //Ordena los campos por cada grupo
                         for (const groupKey in fields_by_groups) {
-                            fields_by_groups[groupKey].sort((a, b) => a.field_order - b.field_order);
+                            fields_by_groups[groupKey].sort((a: any, b: any) => a.field_order - b.field_order);
                         }
                         setFormGroups(fields_by_groups);
                     }else{
@@ -80,10 +80,10 @@ export default function Form({ type }) {
             // implement a function to change the display value of the elements
 
             for (const a of Object.entries(inputValues)) {
-                const id = a[0];
-                const elem = a[1];
+                const id:any = a[0];
+                const elem:any = a[1];
 
-                const value = elem[0];
+                
                 const trueelem = elem[1];
 
                 if (trueelem.field_dependent_on) {
@@ -126,7 +126,7 @@ export default function Form({ type }) {
                 
                 {data.form_privacy_policy_url && data.form_privacy_policy_placeholder && (
                 <p className="text-black-50">
-                    By submiting form button, you agree to our <a className="link-light" href={data.form_privacy_policy_url}>{data.form_privacy_policy_placeholder}</a>
+                    By submiting form button, you agree to our <a className="link-muted underlined text-decoration-underline" href={data.form_privacy_policy_url}>{data.form_privacy_policy_placeholder}</a>
                 </p>
                 )}
                 <button className="btn btn-info" >
