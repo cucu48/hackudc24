@@ -6,6 +6,7 @@ import Select from "@/app/inputs/Select";
 import NotFound from "@/app/custom/errors/404";
 import Color from "@/app/inputs/Color";
 import Range from "@/app/inputs/Range";
+import Recaptcha from "@/app/inputs/Recaptcha";
 
 import React from 'react';
 
@@ -40,6 +41,8 @@ export default function InputSection(props: {formGroups: any, formNames: any, se
                     return <Color element={element} key={index} setInputValues={setInputValues} inputValues={inputValues} />;
                   case "range":
                     return <Range element={element} key={index} setInputValues={setInputValues} inputValues={inputValues} />;
+                  case "recaptcha":
+                    return <Recaptcha element={element} key={index} setInputValues={setInputValues} inputValues={inputValues} />;
                   default:
                     console.error(element.field_type + " not found");
                     return <NotFound />;
