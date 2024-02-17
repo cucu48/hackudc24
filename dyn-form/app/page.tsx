@@ -100,7 +100,7 @@ export default function Page() {
 
   return (
     <div>
-      <form action="" method="post" className="container">
+      <form action={data.form_callback_url} method={data.form_method} className="container">
         <div>
           <h1 className="mt-5">{data.form_type_name}</h1>
           <p>{data.form_type_description}</p>
