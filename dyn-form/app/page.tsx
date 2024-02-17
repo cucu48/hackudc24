@@ -114,7 +114,7 @@ export default function Page() {
           
           {data.form_privacy_policy_url && data.form_privacy_policy_placeholder && (
           <p className="text-black-50">
-            By submiting form button, you agree to our <a href={data.form_privacy_policy_url}>{data.form_privacy_policy_placeholder}</a>
+            By submiting form button, you agree to our <a className="link-light" href={data.form_privacy_policy_url}>{data.form_privacy_policy_placeholder}</a>
           </p>
           )}
         <button className="btn btn-info" >
