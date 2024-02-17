@@ -22,7 +22,7 @@ export default function Number(props: { element: any; setInputValues: any; input
   return (
       <StyledDiv
           id={element.field_id}
-          className={`mb-3 ${isValid ? '' : 'was-validated'}`} // Apply Bootstrap validation class
+          className={`mb-3`} // Apply Bootstrap validation class
           key={element.field_id}
           display={element.field_dependent_on}
       >
@@ -34,6 +34,7 @@ export default function Number(props: { element: any; setInputValues: any; input
             id={inputId}
             className={`form-control ${isValid ? '' : 'is-invalid'}`} // Apply Bootstrap validation class
             type="number"
+            name={inputId}
             onChange={(event) => {
               handleInputChange(event, element, setInputValues, inputValues);
               handleValidation(parseFloat(event.target.value));

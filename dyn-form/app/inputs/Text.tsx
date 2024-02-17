@@ -42,7 +42,7 @@ export default function Text(props: {
   return (
     <StyledDiv
       id={element.field_id}
-      className={`mb-3 ${isValid ? "" : "was-validated"}`} // Apply Bootstrap validation class
+      className={`mb-3`} // Apply Bootstrap validation class
       key={element.field_id}
       display={element.field_dependent_on}
     >
@@ -54,6 +54,7 @@ export default function Text(props: {
         id={inputId}
         className={`form-control ${isValid ? "" : "is-invalid"}`} // Apply Bootstrap validation class
         type="text"
+        name={inputId}
         onChange={(event) => {
           handleInputChange(event, element, setInputValues, inputValues);
           handleValidation(event.target.value);

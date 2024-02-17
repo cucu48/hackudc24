@@ -28,6 +28,7 @@ export default function Date(props: { element: any, setInputValues: any, inputVa
                 id={inputId}
                 className={`form-control ${isValid ? '' : 'is-invalid'}`} // Apply Bootstrap validation class
                 type="date"
+                name={inputId}
                 min={element.field_validations.min_value}
                 max={element.field_validations.max_value}
                 disabled={element.field_readonly}

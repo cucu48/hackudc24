@@ -85,10 +85,19 @@ export default function Page() {
             fatherValue[0] === trueelem.field_dependent_on.field_value
           ) {
             // console.log("SHOW", id, fatherValue);
+            
+            
+            
+            if(document.getElementById(id)?.getAttribute("required") && document.getElementById(id)?.getAttribute("novalidate")){
+              document.getElementById(id)?.removeAttribute("novalidate");
+            }
             document.getElementById(id)?.setAttribute("style", "display:block");
           } else {
             // console.log("HIDE", id, fatherValue);
             document.getElementById(id)?.setAttribute("style", "display:none");
+            if(document.getElementById(id)?.getAttribute("required")){
+              document.getElementById(id)?.setAttribute("novalidate", "true");
+            }
             // console.log(trueelem);
           }
         }

@@ -37,6 +37,7 @@ export default function Select(props: {
         <select
             id={inputId}
             className={`form-select ${isValid ? '' : 'is-invalid'}`} // Apply Bootstrap validation class
+            name={inputId}
             onChange={(event) => {
               handleInputChange(event, element, setInputValues, inputValues);
               handleValidation(event.target.value);
