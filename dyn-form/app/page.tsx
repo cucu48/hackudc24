@@ -8,7 +8,7 @@ const StyledDiv = styled.div`
   //                                  none here   block here
   display: ${(props) => (props.display ? "none" : "block")};
   // remove this line in production
-  background-color: ${(props) => (props.display ? "red" : "blue")};
+  // background-color: ${(props) => (props.display ? "red" : "blue")};
 `;
 
 function Page() {
@@ -72,9 +72,9 @@ function Page() {
 
   return (
     <div>
-      <form action="" method="post">
+      <form action="" method="post" className="container">
         <div>
-          <h1>{data.form_type_name}</h1>
+          <h1 className="mt-5">{data.form_type_name}</h1>
           <p>{data.form_type_description}</p>
         </div>
 
@@ -87,9 +87,10 @@ function Page() {
                 key={element.field_id}
                 display={element.field_dependent_on}
               >
-                <label>{element.field_name}</label>
+                <label for={"inp"+element.field_id} className="form-label">{element.field_name}</label>
                 <input
                   id={"inp"+element.field_id}
+                  className="form-control"
                   type="text"
                   onChange={(event) => handleInputChange(event, element)}
                   required={element.field_required}
@@ -105,9 +106,10 @@ function Page() {
                 key={element.field_id}
                 display={element.field_dependent_on}
               >
-                <label>{element.field_name}</label>
+                <label for={"inp"+element.field_id} className="form-label">{element.field_name}</label>
                 <input
                   id={"inp"+element.field_id}
+                  className="form-control"
                   type="number"
                   onChange={(event) => handleInputChange(event, element)}
                   required={element.field_required}
@@ -125,9 +127,10 @@ function Page() {
                 key={element.field_id}
                 display={element.field_dependent_on}
               >
-                <label>{element.field_name}</label>
+                <label for={"inp"+element.field_id} className="form-label">{element.field_name}</label>
                 <input
                   id={"inp"+element.field_id}
+                  className="form-control"
                   type="date"
                   min={element.field_validations.min_value}
                   max={element.field_validations.max_value}
@@ -143,9 +146,10 @@ function Page() {
                 key={element.field_id}
                 display={element.field_dependent_on}
               >
-                <label>{element.field_name}</label>
+                <label for={"inp"+element.field_id} className="form-label">{element.field_name}</label>
                 <input
                   id={"inp"+element.field_id}
+                  className="form-control"
                   type="checkbox"
                   required={element.field_required}
                   disabled={element.field_readonly}
@@ -159,9 +163,10 @@ function Page() {
                 key={element.field_id}
                 display={element.field_dependent_on && document.getElementById("inp"+element.field_dependent_on.field_id)?.value === element.field_dependent_on.field_value}
               >
-                <label>{element.field_name}</label>
+                <label for={"inp"+element.field_id} className="form-label">{element.field_name}</label>
                 <select
                   id={"inp"+element.field_id}
+                  className="form-select"
                   onChange={(event) => handleInputChange(event, element)}
                   required={element.field_required}
                   disabled={element.field_readonly}
