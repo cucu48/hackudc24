@@ -32,6 +32,29 @@ export default function Page() {
                 </div>
             </div>
           </div>
+          <div className="container col-xxl-8 px-4 py-5">
+            <div className="row align-items-center g-5 py-5">
+                <div className="col-lg-6">
+                    <h2 className="display-5 fw-bold lh-1 mb-3">Turbo-top features!</h2>
+                    <p className="lead mt-2">Polyform brings a multiple modular, conditional and sequentially-combinable modules that are capable of handling active recomplining and conditional pathways in your form.</p>
+                </div>
+                <div className="col-10 col-sm-8 col-lg-6">
+
+                  <h3>Active modules supported:</h3>
+                  <ul className="display-md list-group">
+                      <li className="list-group-item"><i className="fas fa-shield-alt"></i>&nbsp;Recaptcha</li>
+                      <li className="list-group-item"><i className="fas fa-toggle-on"></i>&nbsp;Booleans</li>
+                      <li className="list-group-item"><i className="fas fa-palette"></i>&nbsp;Colors</li>
+                      <li className="list-group-item"><i className="fas fa-calendar-alt"></i>&nbsp;Dates</li>
+                      <li className="list-group-item"><i className="fas fa-sort-numeric-up"></i>&nbsp;Numbers</li>
+                      <li className="list-group-item"><i className="fas fa-sliders-h"></i>&nbsp;Ranges</li>
+                      <li className="list-group-item"><i className="fas fa-caret-square-down"></i>&nbsp;Selects</li>
+                      <li className="list-group-item"><i className="fas fa-font"></i>&nbsp;Texts</li>
+                  </ul>
+                </div>
+                
+            </div>
+          </div>
         </div>
         <link rel="stylesheet" 
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></link>
