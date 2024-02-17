@@ -10,16 +10,16 @@ import React from 'react';
 
 
 
-export default function InputSection(props: {formGroups: any, setInputValues: any, inputValues: any,})
+export default function InputSection(props: {formGroups: any, formNames: any, setInputValues: any, inputValues: any,})
 {
-  const { formGroups, setInputValues, inputValues } = props;
+  const { formGroups,formNames, setInputValues, inputValues } = props;
 
 
   return (<div>
     {formGroups &&
       Object.keys(formGroups).map((groupKey) => (
-          <div key={groupKey}>
-            <h2>{groupKey}</h2>
+          <fieldset className="border p-2" key={formNames[groupKey]}>
+            <legend className="float-none w-auto">{formNames[groupKey]}</legend>
               {formGroups[groupKey].map((element, index) => {
       
                 switch (element.field_type) {
@@ -38,7 +38,7 @@ export default function InputSection(props: {formGroups: any, setInputValues: an
                     return <NotFound />;
                   }
                 })}  
-          </div>
+          </fieldset>
       ))}
   </div>
   );
