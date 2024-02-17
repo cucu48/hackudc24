@@ -2,13 +2,14 @@
 
 import React from 'react';
 
-import Request from "@/app/components/Request";
 import Form from "@/app/components/Form";
+import Navbar from "@/app/components/Navbar";
 export default function Page() {
-
-
     return (
-        <Form type={3}/>
+        <div>
+            <Navbar/>
+            <Form type={3}></Form>
+        </div>
     );
 
 }
