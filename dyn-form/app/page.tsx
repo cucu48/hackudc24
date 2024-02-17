@@ -7,6 +7,7 @@ import InputSection from "@/app/inputs/Main";
 
 export default function Page() {
   const [inputValues, setInputValues] = useState({}); // Estado para almacenar los valores de los elementos
+  const [formGroups, setFormGroups] = useState({});
 
   const url = "https://2433625b-4e68-4689-8259-532bce7b715d.mock.pstmn.io";
   const [data, setData] = useState([]);
@@ -24,6 +25,30 @@ export default function Page() {
               [element.field_id]: [element.field_default_value, element],
             }));
           }
+
+          const fields_by_groups = data.form_fields.reduce((groups, field) => {
+            const group = groups[field.field_group] || [];
+            return {
+              ...groups,
+              [field.field_group]: [...group, field],
+            };
+          }, {});
+
+          //Ordena los campos por cada grupo
+          for (const groupKey in fields_by_groups) {
+            fields_by_groups[groupKey].sort((a, b) => a.field_order - b.field_order);
+          }
+
+
+          setFormGroups(fields_by_groups);
+
+          for (const element of data.form_fields) {
+            setInputValues((prevState) => ({
+                ...prevState,
+                [element.field_id]: [element.field_default_value, element],
+            }));
+          }
+
         });
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -72,7 +97,7 @@ export default function Page() {
           <h1 className="mb-5">{data.form_type_name}</h1>
           <p>{data.form_type_description}</p>
         </div>
-        <InputSection data={data} setInputValues={setInputValues} />
+        <InputSection formGroups={formGroups} setInputValues={setInputValues} />
         <input type="submit" value="Send form" disabled />
         <p className="text-black-50">
           This form requires to be filled following each requirement.
