@@ -51,23 +51,23 @@ function Page() {
         const value = elem[0];
         const trueelem = elem[1];
 
-        if (trueelem.field_dependent_on) {
+        if (
+          trueelem.field_dependent_on
+        ) {
           const fatherValue = inputValues[trueelem.field_dependent_on.field_id];
-          const fatherIdObj = document.getElementById(id);
           if (
             fatherValue &&
             fatherValue[0] === trueelem.field_dependent_on.field_value
-            
           ) {
-            if(fatherIdObj?.style.display === "none"){
-            console.log("SHOW", id, fatherValue);
-            fatherIdObj?.setAttribute("style", "display:block");
-            }
+            console.log(
+              "SHOW", id, fatherValue);
+            document.getElementById(id)?.setAttribute("style", "display:block");
           } else {
-            if(fatherIdObj?.style.display === "block"){
-              console.log("HIDE", id, fatherValue);
-              fatherIdObj?.setAttribute("style", "display:none");
-            }
+            console.log(
+              "HIDE", id, fatherValue);
+              document.getElementById(id)?.setAttribute("style", "display:none");
+            console.log(trueelem);
+            
           }
         }
       }
@@ -77,98 +77,67 @@ function Page() {
 
   return (
     <div>
-      <form action={data.form_callbackurl}>
-        <div>
-          <h1>{data.form_type_name}</h1>
-          <p>{data.form_type_description}</p>
-        </div>
+      <div>
+        <h1>{data.form_type_name}</h1>
+        <p>{data.form_type_description}</p>
+      </div>
 
-        {data.form_fields &&
-          data.form_fields.map((element, index) =>
-            // if element type is text
-            element.field_type === "text" ? (
-              <StyledDiv
-                id={element.field_id}
-                key={element.field_id}
-                display={element.field_dependent_on}
-              >
-                <label>{element.field_name}</label>
-                <input
-                  type="text"
-                  onChange={(event) => handleInputChange(event, element)}
-                  required={element.field_required}
-                  readOnly={element.field_readonly}
-                  value={element.field_default_value}
-                  pattern={element.field_validations.format ? element.field_validations.format : 'unset'}
-                />
-                <p className="muted-text">{element.field_description}</p>
-              </StyledDiv>
-            ) : element.field_type === "number" ? (
-              <StyledDiv
-                id={element.field_id}
-                key={element.field_id}
-                display={element.field_dependent_on}
-              >
-                <label>{element.field_name}</label>
-                <input
-                  type="number"
-                  onChange={(event) => handleInputChange(event, element)}
-                  
-                  min={element.field_validations.min ? element.field_validations.min : 'unset'}
-                  max={element.field_validations.max ? element.field_validations.max : 'unset'}
-                />
-                <p className="muted-text">{element.field_description}</p>
-              </StyledDiv>
-            ) : element.field_type === "date" ? (
-              <StyledDiv
-                id={element.field_id}
-                key={element.field_id}
-                display={element.field_dependent_on}
-              >
-                <label>{element.field_name}</label>
-                <input
-                  type="date"
-                  onChange={(event) => handleInputChange(event, element)}
-                />
-                <p className="muted-text">{element.field_description}</p>
-              </StyledDiv>
-            ) : element.field_type === "boolean" ? (
-              <StyledDiv
-                id={element.field_id}
-                key={element.field_id}
-                display={element.field_dependent_on}
-              >
-                <label>{element.field_name}</label>
-                <input
-                  type="checkbox"
-                  onChange={(event) => handleInputChange(event, element)}
-                />
-                <p className="muted-text">{element.field_description}</p>
-              </StyledDiv>
-            ) : element.field_type === "select" ? (
-              <StyledDiv
-                id={element.field_id}
-                key={element.field_id}
-                display={element.field_dependent_on}
-              >
-                <label>{element.field_name}</label>
-                <select onChange={(event) => handleInputChange(event, element)}>
-                  {element.field_validations.options &&
-                    element.field_validations.options.map((option, index) => (
-                      <option key={option} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                </select>
-                <p className="muted-text">{element.field_description}</p>
-              </StyledDiv>
-            ) : (
-              <div>not found: {element.field_type} </div>
-            )
-          )}
-        <input type="submit" disabled/>
-        <p className="muted-text">This form needs some fixes</p>
-      </form>
+      {data.form_fields &&
+        data.form_fields.map((element, index) =>
+          // if element type is text
+          element.field_type === "text" ? (
+            <StyledDiv id={element.field_id} key={element.field_id} display={element.field_dependent_on}>
+              <label>{element.field_name}</label>
+              <input
+                type="text"
+                onChange={(event) => handleInputChange(event, element)}
+              />
+              <p className="muted-text">{element.field_description}</p>
+            </StyledDiv>
+          ) : element.field_type === "number" ? (
+            <StyledDiv id={element.field_id} key={element.field_id} display={element.field_dependent_on}>
+              <label>{element.field_name}</label>
+              <input
+                type="number"
+                onChange={(event) => handleInputChange(event, element)}
+              />
+              <p className="muted-text">{element.field_description}</p>
+            </StyledDiv>
+          ) : element.field_type === "date" ? (
+            <StyledDiv id={element.field_id} key={element.field_id} display={element.field_dependent_on}>
+              <label>{element.field_name}</label>
+              <input
+                type="date"
+                onChange={(event) => handleInputChange(event, element)}
+              />
+              <p className="muted-text">{element.field_description}</p>
+            </StyledDiv>
+          ) : element.field_type === "boolean" ? (
+            <StyledDiv id={element.field_id} key={element.field_id} display={element.field_dependent_on}>
+              <label>{element.field_name}</label>
+              <input
+                type="checkbox"
+                onChange={(event) => handleInputChange(event, element)}
+              />
+              <p className="muted-text">{element.field_description}</p>
+            </StyledDiv>
+          ) : element.field_type === "select" ? (
+            <StyledDiv id={element.field_id} key={element.field_id} display={element.field_dependent_on}>
+              <label>{element.field_name}</label>
+              <select onChange={(event) => handleInputChange(event, element)}>
+                {element.field_validations.options &&
+                  element.field_validations.options.map((option, index) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+              </select>
+              <p className="muted-text">{element.field_description}</p>
+            </StyledDiv>
+          ) : (
+            <div>not found: {element.field_type} </div>
+          )
+        )}
     </div>
   );
 }
