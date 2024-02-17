@@ -24,6 +24,7 @@ export default function Boolean(props: {
         id={inputId}
         className="form-check-input"
         type="checkbox"
+        name={inputId}
         required={element.field_required}
         disabled={element.field_readonly}
         onChange={(event) =>
