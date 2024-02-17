@@ -1,5 +1,6 @@
 "use client";
 
+
 import { Console } from "console";
 import React from "react";
 import { useState, useEffect } from "react";
@@ -10,7 +11,7 @@ export default function Page() {
   const [formGroups, setFormGroups] = useState({});
   const [formNames, setFormNames] = useState({});
 
-  const url = "https://ed5f37a0-4bf2-45ff-a76c-2485bfe78b9a.mock.pstmn.io";
+  const url = "https://71411636-b9d7-47b5-b1f6-3173afabf738.mock.pstmn.io";
   const [data, setData] = useState([]);
   
   useEffect(() => {
@@ -19,7 +20,7 @@ export default function Page() {
         .then((res) => res.json())
         .then((data) => {
           setData(data);
-          // console.log(data);
+          
           for (const element of data.form_fields) {
             setInputValues((prevState) => ({
               ...prevState,
@@ -70,7 +71,7 @@ export default function Page() {
   useEffect(
     function dependence() {
       // implement a function to change the display value of the elements
-      // console.log(inputValues);
+      
       for (const a of Object.entries(inputValues)) {
         const id = a[0];
         const elem = a[1];
@@ -84,30 +85,23 @@ export default function Page() {
             fatherValue &&
             fatherValue[0] === trueelem.field_dependent_on.field_value
           ) {
-            // console.log("SHOW", id, fatherValue);
-            
-            
             
             if(document.getElementById(id)?.getAttribute("required") && document.getElementById(id)?.getAttribute("novalidate")){
               document.getElementById(id)?.removeAttribute("novalidate");
             }
             document.getElementById(id)?.setAttribute("style", "display:block");
           } else {
-            // console.log("HIDE", id, fatherValue);
+            
             document.getElementById(id)?.setAttribute("style", "display:none");
             if(document.getElementById(id)?.getAttribute("required")){
               document.getElementById(id)?.setAttribute("novalidate", "true");
             }
-            // console.log(trueelem);
           }
         }
       }
     },
     [inputValues]
   );
-
-
-
 
   return (
     <div>
@@ -117,11 +111,22 @@ export default function Page() {
           <p>{data.form_type_description}</p>
         </div>
         <InputSection formGroups={formGroups} formNames={formNames} setInputValues={setInputValues} />
-        <input type="submit" value="Send form" className="btn btn-info" />
-        <p className="text-black-50">
-          This form requires to be filled following each requirement.
-        </p>
+          
+          {data.form_privacy_policy_url && data.form_privacy_policy_placeholder && (
+          <p className="text-black-50">
+            By submiting form button, you agree to our <a className="link-light" href={data.form_privacy_policy_url}>{data.form_privacy_policy_placeholder}</a>
+          </p>
+          )}
+        <button className="btn btn-info" >
+          <i className="fa-solid fa-paper-plane"></i>&nbsp;Send!
+        </button>
       </form>
+      <link rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></link>
+    
+
+    
+    <br />
     </div>
   );
 }

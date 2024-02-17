@@ -17,6 +17,9 @@ export default function Boolean(props: {
     >
       <div className="form-check">
       <label for={inputId} className="form-check-label">
+        {element.field_icon && (
+        <i className={element.field_icon} style={{ marginRight: "10px" }}></i>
+      )}
         {element.field_name}
       </label>
         

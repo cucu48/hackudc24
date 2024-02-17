@@ -21,6 +21,9 @@ export default function Date(props: { element: any, setInputValues: any, inputVa
             display={element.field_dependent_on}
         >
             <label htmlFor={inputId} className="form-label">
+                {element.field_icon && (
+                    <i className={element.field_icon} style={{ marginRight: "10px" }}></i>
+                )}
                 {element.field_name}
             </label>
             <p className="mb-1 text-black-50">{element.field_description}</p>

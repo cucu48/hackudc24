@@ -16,9 +16,11 @@ export default function Text(props: {
 
   const handleValidation = (value: any) => {
     // Implement your specific validation logic here
-    console.log(element);
-    if (element.field_validations == null || element.field_validations == undefined) {
-    
+
+    if (
+      element.field_validations == null ||
+      element.field_validations == undefined
+    ) {
       setIsValid(isValid);
     } else {
       if (element.field_validations.format !== undefined) {
@@ -33,7 +35,14 @@ export default function Text(props: {
         const isValid = value.length >= element.field_validations.min_length;
         isValid
           ? setErrorMessage("")
-          : setErrorMessage("Text should be at least 10 characters");
+          : setErrorMessage("Text should be at least " + element.field_validations.min_length + " characters");
+        setIsValid(isValid);
+      }
+      if (element.field_validations.max_length !== undefined) {
+        const isValid = value.length <= element.field_validations.min_length;
+        isValid
+          ? setErrorMessage("")
+          : setErrorMessage("Text should be at max " + element.field_validations.max_length + " characters");
         setIsValid(isValid);
       }
     }
@@ -47,9 +56,13 @@ export default function Text(props: {
       display={element.field_dependent_on}
     >
       <label htmlFor={inputId} className="form-label">
+        {element.field_icon && (
+          <i className={element.field_icon} style={{ marginRight: "10px" }}></i>
+        )}
         {element.field_name}
       </label>
       <p className="mb-1 text-black-50">{element.field_description}</p>
+
       <input
         id={inputId}
         className={`form-control ${isValid ? "" : "is-invalid"}`} // Apply Bootstrap validation class
