@@ -19,7 +19,7 @@ export default function Page() {
         .then((res) => res.json())
         .then((data) => {
           setData(data);
-          // console.log(data);
+          
           for (const element of data.form_fields) {
             setInputValues((prevState) => ({
               ...prevState,
@@ -70,7 +70,7 @@ export default function Page() {
   useEffect(
     function dependence() {
       // implement a function to change the display value of the elements
-      // console.log(inputValues);
+      
       for (const a of Object.entries(inputValues)) {
         const id = a[0];
         const elem = a[1];
@@ -84,21 +84,17 @@ export default function Page() {
             fatherValue &&
             fatherValue[0] === trueelem.field_dependent_on.field_value
           ) {
-            // console.log("SHOW", id, fatherValue);
-            
-            
             
             if(document.getElementById(id)?.getAttribute("required") && document.getElementById(id)?.getAttribute("novalidate")){
               document.getElementById(id)?.removeAttribute("novalidate");
             }
             document.getElementById(id)?.setAttribute("style", "display:block");
           } else {
-            // console.log("HIDE", id, fatherValue);
+            
             document.getElementById(id)?.setAttribute("style", "display:none");
             if(document.getElementById(id)?.getAttribute("required")){
               document.getElementById(id)?.setAttribute("novalidate", "true");
             }
-            // console.log(trueelem);
           }
         }
       }
