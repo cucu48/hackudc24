@@ -89,6 +89,7 @@ function Page() {
               >
                 <label>{element.field_name}</label>
                 <input
+                  id={"inp"+element.field_id}
                   type="text"
                   onChange={(event) => handleInputChange(event, element)}
                   required={element.field_required}
@@ -106,6 +107,7 @@ function Page() {
               >
                 <label>{element.field_name}</label>
                 <input
+                  id={"inp"+element.field_id}
                   type="number"
                   onChange={(event) => handleInputChange(event, element)}
                   required={element.field_required}
@@ -125,6 +127,7 @@ function Page() {
               >
                 <label>{element.field_name}</label>
                 <input
+                  id={"inp"+element.field_id}
                   type="date"
                   min={element.field_validations.min_value}
                   max={element.field_validations.max_value}
@@ -142,6 +145,7 @@ function Page() {
               >
                 <label>{element.field_name}</label>
                 <input
+                  id={"inp"+element.field_id}
                   type="checkbox"
                   required={element.field_required}
                   disabled={element.field_readonly}
@@ -153,10 +157,11 @@ function Page() {
               <StyledDiv
                 id={element.field_id}
                 key={element.field_id}
-                display={element.field_dependent_on}
+                display={element.field_dependent_on && document.getElementById("inp"+element.field_dependent_on.field_id)?.value === element.field_dependent_on.field_value}
               >
                 <label>{element.field_name}</label>
                 <select
+                  id={"inp"+element.field_id}
                   onChange={(event) => handleInputChange(event, element)}
                   required={element.field_required}
                   disabled={element.field_readonly}
