@@ -4,15 +4,18 @@ import handleInputChange from "@/app/custom/logic/handleInputChange";
   
 export default function Date(props: {element: any, setInputValues: any, inputValues: any}) {
     const { element } = props;  
+    const inputId = "inp" + element.field_id;
     return (
         <StyledDiv
         id={element.field_id}
+        className="mb-3"
         key={element.field_id}
         display={element.field_dependent_on}
         >
-        <label for={"inp"+element.field_id} className="form-label">{element.field_name}</label>
+        <label for={inputId} className="form-label">{element.field_name}</label>
+        <p className="mb-1 text-black-50">{element.field_description}</p>
         <input
-            id={"inp"+element.field_id}
+            id={inputId}
             className="form-control"
             type="date"
             min={element.field_validations.min_value}
@@ -21,7 +24,6 @@ export default function Date(props: {element: any, setInputValues: any, inputVal
             required={element.field_required}
             onChange={(event) => handleInputChange(event, element, setInputValues, inputValues)}
         />
-        <p className="muted-text">{element.field_description}</p>
         </StyledDiv>
     );
 }

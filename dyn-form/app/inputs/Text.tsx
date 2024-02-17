@@ -8,14 +8,15 @@ export default function Text(props: {element: any, setInputValues: any, inputVal
   const inputId = "inp" + element.field_id;
 
   return (
-    <StyledDiv
-      id={element.field_id}
-      key={element.field_id}
-      display={element.field_dependent_on}
-    >
+    <StyledDiv 
+        id={element.field_id}
+        className="mb-3"
+        key={element.field_id}
+        display={element.field_dependent_on}>
       <label for={inputId} className="form-label">
         {element.field_name}
       </label>
+      <p className="mb-1 text-black-50">{element.field_description}</p>
       <input
         id={inputId}
         className="form-control"
@@ -26,7 +27,6 @@ export default function Text(props: {element: any, setInputValues: any, inputVal
         maxLength={element.field_validations.max_length}
         readOnly={element.field_readonly}
       />
-      <p className="muted-text">{element.field_description}</p>
     </StyledDiv>
   );
 }

@@ -75,7 +75,7 @@ export default function Page() {
 
         <InputSection data={data} setInputValues={setInputValues} />
         <input type="submit" value="Send form" disabled />
-        <p className="muted-text small-text">
+        <p className="text-black-50">
           This form requires to be filled following each requirement.
         </p>
       </form>
