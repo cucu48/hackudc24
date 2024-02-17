@@ -7,7 +7,6 @@ import { useState, useEffect } from "react";
 import InputSection from "@/app/inputs/Main";
 
 
-import { useRouter } from 'next/router'
 
 import Navbar from "@/app/components/Navbar";
 
