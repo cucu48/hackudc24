@@ -22,7 +22,30 @@ function Page() {
     });
   }, []);
 
-  
+  //Emmagatzenem els inputs de les entrades en un vector
+  const [inputValues, setInputValues] = useState({}); // Estado para almacenar los valores de los elementos
+  function handleInputChange(event) {
+    const { id, value } = event.target;
+    setInputValues(prevState => ({
+      ...prevState,
+      [id]: value
+    }));
+
+  }
+
+
+  function dependence(element) {
+    if (element && element.field_dependent_on) {
+      //Revisa el valor actual de la entrada pare
+      const dependentFieldValue = inputValues[element.field_dependent_on.field_id];
+      if (dependentFieldValue === element.field_dependent_on.field_value) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    return element.field_readonly;
+  }
 
   return (
     <div>
@@ -37,9 +60,9 @@ function Page() {
 
             // if element type is text
             element.field_type === "text" ?
-            <StyledDiv id={index} display={element.field_dependent_on}>
+            <StyledDiv id={element.field_id} display={element.field_dependent_on}>
               <label>{element.field_name}</label>
-              <input type="text" disabled={element.field_readonly} />
+              <input type="text" onChange={handleInputChange} disabled={dependence(element)} />
               
               {/* {element.field_dependent_on && (
                 <script>  
@@ -56,27 +79,27 @@ function Page() {
             </StyledDiv>
           : 
           element.field_type === "number" ?
-            <div id={index} class="container">
+            <div id={element.field_id} class="container">
               <label>{element.field_name}</label>
-              <input type="number" disabled={element.field_readonly} />
+              <input type="number" onChange={handleInputChange} disabled={dependence(element,data)} />
             </div>
           : 
           element.field_type === "date" ?
-            <div id={index} class="container">
+            <div id={element.field_id} class="container">
               <label>{element.field_name}</label>
-              <input type="date" disabled={element.field_readonly} />
+              <input type="date" onChange={handleInputChange} disabled={dependence(element,data)} />
             </div>
           : 
           element.field_type === "boolean" ?
-            <div id={index} class="container">
+            <div id={element.field_id} class="container">
               <label>{element.field_name}</label>
-              <input type="checkbox" disabled={element.field_readonly} />
+              <input type="checkbox" onChange={handleInputChange} disabled={dependence(element,data)} />
             </div>
           : 
           element.field_type === "select" ?
-            <div id={index} class="container">
+            <div id={element.field_id} class="container">
               <label>{element.field_name}</label>
-              <select disabled={element.field_readonly} >
+              <select  onChange={handleInputChange} disabled={element.field_readonly} >
                 {element.field_validations.options && element.field_validations.options.map((option, index) => (
                   <option value={option}>{option}</option>
                 ))}
