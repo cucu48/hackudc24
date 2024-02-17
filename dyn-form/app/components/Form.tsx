@@ -119,18 +119,24 @@ export default function Form({ type }) {
         <div>
             <form action={data.form_callback_url} method={data.form_method} className="container">
                 <div>
-                    <h1 className="mt-5">{data.form_type_name}</h1>
-                    <p>{data.form_type_description}</p>
+                <h1 className="mt-5">{data.form_type_name}</h1>
+                <p>{data.form_type_description}</p>
                 </div>
                 <InputSection formGroups={formGroups} formNames={formNames} setInputValues={setInputValues} />
-                <input type="submit" value="Send form" className="btn btn-info" />
+                
+                {data.form_privacy_policy_url && data.form_privacy_policy_placeholder && (
                 <p className="text-black-50">
-                    This form requires to be filled following each requirement.
+                    By submiting form button, you agree to our <a className="link-light" href={data.form_privacy_policy_url}>{data.form_privacy_policy_placeholder}</a>
                 </p>
+                )}
+                <button className="btn btn-info" >
+                <i className="fa-solid fa-paper-plane"></i>&nbsp;Send!
+                </button>
             </form>
-            <link rel="stylesheet"
-                  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></link>
-        </div>
+            <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></link>
+    <br />
+    </div>
     );
 }
 
