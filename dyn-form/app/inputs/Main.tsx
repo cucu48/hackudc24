@@ -18,7 +18,7 @@ export default function InputSection(props: {formGroups: any, formNames: any, se
   return (<div>
     {formGroups &&
       Object.keys(formGroups).map((groupKey) => (
-          <fieldset className="border p-2" key={formNames[groupKey]}>
+          <fieldset className="border border-dark rounded p-2 mb-5" key={formNames[groupKey]}>
             <legend className="float-none w-auto">{formNames[groupKey]}</legend>
               {formGroups[groupKey].map((element, index) => {
       

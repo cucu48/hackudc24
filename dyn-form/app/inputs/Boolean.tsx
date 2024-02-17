@@ -15,13 +15,14 @@ export default function Boolean(props: {
       key={element.field_id}
       display={element.field_dependent_on}
     >
-      <label for={inputId} className="form-label">
+      <div className="form-check">
+      <label for={inputId} className="form-check-label">
         {element.field_name}
       </label>
-      <p className="mb-1 text-black-50">{element.field_description}</p>
+        
       <input
         id={inputId}
-        className="form-control"
+        className="form-check-input"
         type="checkbox"
         required={element.field_required}
         disabled={element.field_readonly}
@@ -29,6 +30,8 @@ export default function Boolean(props: {
           handleInputChange(event, element, setInputValues, inputValues)
         }
       />
+      </div>
+      <p className="mb-1 text-black-50">{element.field_description}</p>
     </StyledDiv>
   );
 }
