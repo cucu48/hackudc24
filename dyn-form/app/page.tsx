@@ -74,7 +74,7 @@ function Page() {
     <div>
       <form action="" method="post" className="container">
         <div>
-          <h1 className="mt-5">{data.form_type_name}</h1>
+          <h1 className="mb-5">{data.form_type_name}</h1>
           <p>{data.form_type_description}</p>
         </div>
 
@@ -82,12 +82,14 @@ function Page() {
           data.form_fields.map((element, index) =>
             // if element type is text
             element.field_type === "text" ? (
-              <StyledDiv
+              <StyledDiv 
                 id={element.field_id}
+                className="mb-3"
                 key={element.field_id}
                 display={element.field_dependent_on}
               >
                 <label for={"inp"+element.field_id} className="form-label">{element.field_name}</label>
+                <p className="mb-1 text-black-50 ">{element.field_description}</p>
                 <input
                   id={"inp"+element.field_id}
                   className="form-control"
@@ -98,15 +100,16 @@ function Page() {
                   maxLength={element.field_validations.max_length}
                   readOnly={element.field_readonly}
                 />
-                <p className="muted-text">{element.field_description}</p>
               </StyledDiv>
             ) : element.field_type === "number" ? (
               <StyledDiv
                 id={element.field_id}
+                className="mb-3"
                 key={element.field_id}
                 display={element.field_dependent_on}
               >
                 <label for={"inp"+element.field_id} className="form-label">{element.field_name}</label>
+                <p className="mb-1 text-black-50">{element.field_description}</p>
                 <input
                   id={"inp"+element.field_id}
                   className="form-control"
@@ -119,15 +122,16 @@ function Page() {
                   // add an OPTIONAL attibute to the maximum value
                   max={element.field_validations.max_value}
                 />
-                <p className="muted-text">{element.field_description}</p>
               </StyledDiv>
             ) : element.field_type === "date" ? (
               <StyledDiv
                 id={element.field_id}
+                className="mb-3"
                 key={element.field_id}
                 display={element.field_dependent_on}
               >
                 <label for={"inp"+element.field_id} className="form-label">{element.field_name}</label>
+                <p className="mb-1 text-black-50">{element.field_description}</p>
                 <input
                   id={"inp"+element.field_id}
                   className="form-control"
@@ -138,32 +142,34 @@ function Page() {
                   required={element.field_required}
                   onChange={(event) => handleInputChange(event, element)}
                 />
-                <p className="muted-text">{element.field_description}</p>
               </StyledDiv>
             ) : element.field_type === "boolean" ? (
               <StyledDiv
                 id={element.field_id}
+                className="form-check"
                 key={element.field_id}
                 display={element.field_dependent_on}
               >
                 <label for={"inp"+element.field_id} className="form-label">{element.field_name}</label>
                 <input
                   id={"inp"+element.field_id}
-                  className="form-control"
+                  className="form-check-input"
                   type="checkbox"
                   required={element.field_required}
                   disabled={element.field_readonly}
                   onChange={(event) => handleInputChange(event, element)}
                 />
-                <p className="muted-text">{element.field_description}</p>
+                <p className="mb-1 text-black-50">{element.field_description}</p>
               </StyledDiv>
             ) : element.field_type === "select" ? (
               <StyledDiv
                 id={element.field_id}
+                className="mb-3"
                 key={element.field_id}
                 display={element.field_dependent_on && document.getElementById("inp"+element.field_dependent_on.field_id)?.value === element.field_dependent_on.field_value}
               >
                 <label for={"inp"+element.field_id} className="form-label">{element.field_name}</label>
+                <p className="mb-1 text-black-50">{element.field_description}</p>
                 <select
                   id={"inp"+element.field_id}
                   className="form-select"
@@ -178,14 +184,13 @@ function Page() {
                       </option>
                     ))}
                 </select>
-                <p className="muted-text">{element.field_description}</p>
               </StyledDiv>
             ) : (
               <div>not found: {element.field_type} </div>
             )
           )}
         <input type="submit" value="Send form" disabled />
-        <p className="muted-text">
+        <p className="text-black-50">
           This form requires to be filled following each requirement.
         </p>
       </form>
